@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco }  from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import remarkGfm from 'remark-gfm';
 import Feed from '@/components/markdown/feed.component';
 
@@ -101,11 +103,56 @@ export default function NoteDetail({ data, contentType, path }) {
       )
   }
 
-  return (
-      <>
-        <ReactMarkdown className="prose min-w-fit dark:prose-invert" children={pageData} remarkPlugins={[remarkGfm]} />
-      </>
-  )
+  if (typeof pageData == 'string' || pageData instanceof String) {
+    if (!path.endsWith('.md')) {
+      return ( 
+        <section className="max-w-full w-full">
+          <SyntaxHighlighter wrapLongLines={true} showLineNumbers={true}  language={lang} style={docco} children={pageData} />
+        </section>
+      )
+    } else {
+      return (
+        <>
+        <ReactMarkdown className="prose min-w-fit dark:prose-invert" children={pageData} remarkPlugins={[remarkGfm]}
+        components={{
+          code({node, inline, className, children, ...props}) {
+            const match = /language-(\w+)/.exec(className || '')
+            return !inline && match ? (
+              <SyntaxHighlighter
+              {...props}
+              children={String(children).replace(/\n$/, '')}
+              style={dark}
+              language={match[1]}
+              PreTag="div"
+              />
+            ) : (
+              <code {...props} className={className}>
+              {children}
+              </code>
+            )
+          },
+            pre({ node, inline, className, children, ...props}) {
+              const match = /language-(\w+)/.exec(className || '')
+              return !inline && match ? (
+                <SyntaxHighlighter
+                {...props}
+                children={String(children).replace(/\n$/, '')}
+                style={dark}
+                language={match[1]}
+                PreTag="div"
+                />
+              ) : (
+                <pre {...props} className={className}>
+                {children}
+                </pre>
+              )
+
+            }
+        }} />
+        </>
+      )
+    }
+  }
 
 
 }

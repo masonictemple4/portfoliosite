@@ -41,7 +41,7 @@ module.exports = {
             em: { color: "#FFF" },
             strong: { color: "#FFF" },
             blockquote: { color: "#FFF" },
-            code: { backgroundColor: "#343941", color: "#FFF" },
+            code: { backgroundColor: "#343941", color: "#ff622d", fontWeight: "normal" },
             pre: { backgroundColor: "#343941", color: "#FFF" },
           },
         },

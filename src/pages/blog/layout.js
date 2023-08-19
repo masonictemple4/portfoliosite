@@ -7,11 +7,11 @@ const MarkdownLayout = ({ children }) => {
   return (
     <main className="flex min-h-screen flex-col items-center p-8 gray-50 dark:bg-gray-900 h-full min-h-full">
       <section className={""}>
-            <BreadCrumbs />
             <PageHeader plainText={''} gradientText={"The Software Engineer's Quarry"} />
-             <div className="container w-full max-w-full mx-auto p-8">
-                {children}
-              </div>
+            <BreadCrumbs />
+            <div className="container w-5/6 mx-auto p-8">
+              {children}
+            </div>
       </section>
     </main>
   )

@@ -14,7 +14,7 @@ const BreadCrumbs = () => {
         {pathSegments.map((segment, index) => (
           <li key={index} className="mr-2">
             {index === pathSegments.length - 1 ? (
-              <span>{segment.replace(detailPath, "")}</span>  // Current page isn't clickable
+              <span>{segment.replace(detailPath, "")} /</span>  // Current page isn't clickable
             ) : (
               <Link href={`/${pathSegments.slice(0, index + 1).join('/')}`}>
                 <span className="text-blue-500 hover:underline">{segment.replace(detailPath, "")}</span>
