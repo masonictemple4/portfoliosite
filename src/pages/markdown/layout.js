@@ -8,7 +8,7 @@ const MarkdownLayout = ({ children }) => {
       <section className={""}>
             <BreadCrumbs />
             <PageHeader plainText={''} gradientText={"The Software Engineer's Quarry"} />
-             <div className="container w-full m-w-full mx-auto p-8">
+             <div className="container w-full max-w-full mx-auto p-8">
                 {children}
               </div>
       </section>

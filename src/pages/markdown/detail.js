@@ -4,6 +4,7 @@ import  { PageHeader }  from '@/components/pageheader.component';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import remarkGfm from 'remark-gfm';
 import Feed from '@/components/markdown/feed.component';
+import Image from 'next/image';
 
 export async function getServerSideProps(context) {
   const { path } = context.query;
@@ -91,7 +92,7 @@ export default function NoteDetail({ data, contentType, path }) {
       const imgString = bufferToDataUrl(contentType, pageData);
 
       return (
-        <img className="h-full w-full" src={imgString} />
+          <img className="w-full max-w-full p-0 m-0" src={imgString} alt={path} />
       )
   }
 
@@ -100,4 +101,8 @@ export default function NoteDetail({ data, contentType, path }) {
   )
 
 
+}
+
+function createMarkup(data) {
+  return {__html: data};
 }
