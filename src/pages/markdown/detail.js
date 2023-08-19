@@ -91,24 +91,12 @@ export default function NoteDetail({ data, contentType, path }) {
       const imgString = bufferToDataUrl(contentType, pageData);
 
       return (
-        <main className="flex min-h-screen flex-col items-center p-24 bg-gray-50 dark:bg-gray-900">
-          <section className="flex min-h-full flex-col items-center">
-            <div className="flex flex-col items-center w-4/6 mx-auto">
-                <PageHeader plainText={''} gradientText={trimPrefix(path, "/")} breadcrumbs={path} />
-                <img className="h-full w-full" src={imgString} />
-            </div>
-          </section>
-        </main>
+        <img className="h-full w-full" src={imgString} />
       )
   }
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 h-full">
-      <div className="container w-2/5 mx-auto p-8">
-        <PageHeader plainText={''} gradientText={trimPrefix(path, "/")} breadcrumbs={path} />
         <ReactMarkdown className="prose min-w-fit dark:prose-invert" children={pageData} remarkPlugins={[remarkGfm]} />
-      </div>
-    </section>
   )
 
 

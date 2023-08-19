@@ -1,8 +1,8 @@
 import Feed from '@/components/markdown/feed.component.js';
+import MarkdownLayout from './layout';
 
 
 export async function getServerSideProps(context) {
-  const { path } = context.query;
     const response = await fetch('http://localhost:8080/notes/', {
       method: 'GET',
     });
@@ -12,7 +12,6 @@ export async function getServerSideProps(context) {
   return {
     props: {
       notes: data.files,
-      path: path,
     },
   };
 }
@@ -20,8 +19,6 @@ export async function getServerSideProps(context) {
 export default function Markdown({ notes }) {
 
   return (
-    <>
-      <Feed notes={notes} />
-    </>
+    <Feed notes={notes} />
   )
 }
