@@ -6,7 +6,6 @@ const BreadCrumbs = () => {
 
   const pathSegments = router.asPath.split('/').filter((x) => x);
 
-  console.log("pathSegments:", pathSegments);
   const detailPath = "detail?path="
 
   return (
