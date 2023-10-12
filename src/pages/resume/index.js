@@ -13,8 +13,6 @@ export async function getServerSideProps(context) {
 
   const data = await pdResp.text();
 
-
-
   return {
     props: {
       data: data,
@@ -22,12 +20,13 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
 export default function Resume({ data, contentType }) {
 
   const [pageData, setPageData] = useState(data);
 
   async function downloadResume() {
-    const pdfDownload = await fetch(PDF_RESUME_URL);
+    const pdfDownload = await fetch(PDF_RESUME_URL + '?ignoreCache=1');
     const arrBuff = await pdfDownload.arrayBuffer();
 
     const buffData = Buffer.from(arrBuff);
