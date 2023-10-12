@@ -22,8 +22,10 @@ export async function getServerSideProps(context) {
   const contentType = pdResp.headers.get('Content-Type');
   
 
-//  const buf =  await pdResp.arrayBuffer();
-//  const data = Buffer.from(buf);
+  //  When serving the data from golang we would
+  //  need to do this.
+  //  const buf =  await pdResp.arrayBuffer();
+  //  const data = Buffer.from(buf);
   //
   const data = await pdResp.text();
 
@@ -64,9 +66,7 @@ export default function NoteDetail({ post, data, contentType }) {
       )
     } else {
       return (
-        <section className="max-w-full w-full">
-          <ReactMarkdown className="prose dark:prose-invert" children={data} remarkPlugins={[remarkFrontmatter, remarkGfm]} />
-        </section>
+          <ReactMarkdown className="prose w-full min-w-full max-w-full dark:prose-invert" children={data} remarkPlugins={[remarkFrontmatter, remarkGfm]} />
       )
     }
   }

@@ -9,7 +9,7 @@ const BreadCrumbs = () => {
   const detailPath = "detail?path="
 
   return (
-    <nav>
+    <nav className="w-2/3 max-w-2/3 mx-auto">
       <ul className="flex">
         {pathSegments.map((segment, index) => (
           <li key={index} className="mr-2">

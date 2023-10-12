@@ -6,10 +6,10 @@ import BreadCrumbs from '@/components/breadcrumbs/breadcrumbs.component';
 const MarkdownLayout = ({ children }) => {
   return (
     <main className="flex min-h-screen flex-col items-center p-8 gray-50 dark:bg-gray-900 h-full min-h-full">
-      <section className={""}>
+      <section className={"container"}>
             <PageHeader plainText={''} gradientText={"The Software Engineer's Quarry"} />
             <BreadCrumbs />
-            <div className="container w-5/6 p-3">
+            <div className="w-2/3 mx-auto p-6">
               {children}
             </div>
       </section>
