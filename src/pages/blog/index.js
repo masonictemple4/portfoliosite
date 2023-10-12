@@ -1,24 +1,23 @@
 import Feed from '@/components/markdown/feed.component.js';
 import MarkdownLayout from './layout';
+import axios from 'axios';
 
 
 export async function getServerSideProps(context) {
-    const response = await fetch('http://localhost:8080/notes/', {
-      method: 'GET',
-    });
-
-    const data = await response.json();
+  const response = await fetch('http://localhost:8080/blog');
+  const data = await response.json();
+  
 
   return {
     props: {
-      notes: data.files,
+      blogs: data,
     },
   };
 }
 
-export default function Markdown({ notes }) {
+export default function Markdown({ blogs }) {
 
   return (
-    <Feed notes={notes} />
+    <Feed blogs={blogs} />
   )
 }

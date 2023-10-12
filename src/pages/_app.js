@@ -20,9 +20,9 @@ export default function App({ Component, pageProps }) {
   if (router.pathname.startsWith('/blog')) {
        if (isClient) {
         return (
-             <MarkdownLayout>
+          <MarkdownLayout>
             <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
-                <Component {...pageProps} />
+              <Component {...pageProps} />
             </SessionProvider>
           </MarkdownLayout>
         )

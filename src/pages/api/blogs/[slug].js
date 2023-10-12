@@ -1,19 +1,17 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-//
-//
 import { getSession } from 'next-auth/react'
 import { BASE_API_URL } from '@/utils/globals';
 
-const notesList = async (req, res) => {
+const blogDetail = async (req, res) => {
   // const session = await getSession({ req })
+  const { slug } = req.query
 
   const { method, body } = req
 
   let response
   switch (method) {
     case 'GET':
-      const url = BASE_API_URL + '/notes/'
-      console.log('url:', url)
+      const url = BASE_API_URL + '/blog/' + slug
       response = await fetch(url, {
         method,
         headers: {
@@ -33,4 +31,5 @@ const notesList = async (req, res) => {
   }
 }
 
-export default notesList
+export default blogDetail
+
