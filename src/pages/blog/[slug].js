@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
 import emoji from 'remark-emoji';
 import BlogDetailHeader from '@/components/blog/blogheader.component';
+import Image from 'next/image';
 
 export async function getServerSideProps(context) {
   const { slug } = context.query;
@@ -14,18 +15,10 @@ export async function getServerSideProps(context) {
   const respJSON = await resp.json();
 
 
-
-
   const pdResp = await fetch(respJSON.contenturl);
 
   const contentType = pdResp.headers.get('Content-Type');
   
-
-  //  When serving the data from golang we would
-  //  need to do this.
-  //  const buf =  await pdResp.arrayBuffer();
-  //  const data = Buffer.from(buf);
-
   const data = await pdResp.text();
 
   return {
@@ -51,7 +44,7 @@ export default function BlogDetail({ post, data, contentType }) {
 
       return (
         <>
-          <img className="w-full max-w-full p-0 m-0" src={imgString} alt={post.title} />
+          <Image className="w-full max-w-full p-0 m-0" src={imgString} alt={post.title} height={'100%'} width={'100%'} />
         </>
       )
   }
@@ -60,14 +53,14 @@ export default function BlogDetail({ post, data, contentType }) {
     if (!post.contenturl.endsWith('.md')) {
       return ( 
         <section className="max-w-full w-full">
-          <SyntaxHighlighter wrapLongLines={true} showLineNumbers={true}  style={docco} children={data} />
+          <SyntaxHighlighter wrapLongLines={true} showLineNumbers={true} style={docco}>{data}</SyntaxHighlighter>
         </section>
       )
     } else {
       return (
         <>
           <BlogDetailHeader blog={post} />
-          <ReactMarkdown className="prose w-full min-w-full max-w-full dark:prose-invert" children={data} remarkPlugins={[remarkFrontmatter, [emoji, {"emoticon": true}], remarkGfm]} />
+          <ReactMarkdown className="prose w-full min-w-full max-w-full dark:prose-invert" remarkPlugins={[remarkFrontmatter, [emoji, {"emoticon": true}], remarkGfm]}>{data}</ReactMarkdown>
 
         </>
       )

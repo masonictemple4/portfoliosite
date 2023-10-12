@@ -1,6 +1,6 @@
 import { PDF_RESUME_URL } from "@/utils/globals";
 
-export default async (req, res) => {
+export default async function getResume(req, res) {
   const { method, body } = req
 
 

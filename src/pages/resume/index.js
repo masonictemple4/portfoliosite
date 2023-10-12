@@ -62,7 +62,7 @@ export default function Resume({ data, contentType }) {
               <span>Download</span>
             </button>
           </div>
-          <ReactMarkdown className="prose w-full min-w-full max-w-full dark:prose-invert" children={data} remarkPlugins={[remarkFrontmatter, [emoji, {"emoticon": true}], remarkGfm]} />
+          <ReactMarkdown className="prose w-full min-w-full max-w-full dark:prose-invert" remarkPlugins={[remarkFrontmatter, [emoji, {"emoticon": true}], remarkGfm]}>{data}</ReactMarkdown>
         </>
       )
   }
