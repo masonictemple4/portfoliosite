@@ -29,8 +29,6 @@ module.exports = {
               },
             },
             h1: {
-              width: "100%",
-              textAlign: "center",
               color: "#FFF",
             },
             h2: {

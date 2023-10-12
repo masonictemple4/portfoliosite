@@ -1,4 +1,4 @@
-import Feed from '@/components/markdown/feed.component.js';
+import Feed from '@/components/blog/feed.component.js';
 import MarkdownLayout from './layout';
 import axios from 'axios';
 

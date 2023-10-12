@@ -4,6 +4,7 @@ import { SessionProvider } from 'next-auth/react'
 import { useRouter } from 'next/router';
 import MarkdownLayout from '@/pages/blog/layout';
 import { useEffect, useState } from 'react';
+import MainLayout from './layout';
 
 
 
@@ -16,15 +17,16 @@ export default function App({ Component, pageProps }) {
 
   const router = useRouter();
 
-
   if (router.pathname.startsWith('/blog')) {
        if (isClient) {
         return (
-          <MarkdownLayout>
-            <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
-              <Component {...pageProps} />
-            </SessionProvider>
-          </MarkdownLayout>
+          <MainLayout>
+            <MarkdownLayout>
+              <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
+                <Component {...pageProps} />
+              </SessionProvider>
+            </MarkdownLayout>
+          </MainLayout>
         )
       } else {
         return (
@@ -34,9 +36,11 @@ export default function App({ Component, pageProps }) {
   }  else {
     if (isClient) {
       return (
-        <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
-          <Component {...pageProps} />
-        </SessionProvider>
+        <MainLayout>
+          <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
+            <Component {...pageProps} />
+          </SessionProvider>
+        </MainLayout>
       )
     } else {
       return (

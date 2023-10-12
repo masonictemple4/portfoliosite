@@ -8,26 +8,27 @@ const BreadCrumbs = () => {
 
   const detailPath = "detail?path="
 
-  return (
-    <nav className="w-2/3 max-w-2/3 mx-auto">
+    return (
+      <nav className="w-2/3 max-w-2/3 mx-auto">
       <ul className="flex">
-        {pathSegments.map((segment, index) => (
-          <li key={index} className="mr-2">
-            {index === pathSegments.length - 1 ? (
-              <span>{segment.replace(detailPath, "")} /</span>  // Current page isn't clickable
-            ) : (
-              <Link href={`/${pathSegments.slice(0, index + 1).join('/')}`}>
-                <span className="text-blue-500 hover:underline">{segment.replace(detailPath, "")}</span>
-              </Link>
-            )}
-            {index !== pathSegments.length - 1 && (
-              <span className="mx-2">/</span>  // Delimiter
-            )}
-          </li>
-        ))}
+      {pathSegments.map((segment, index) => (
+        <li key={index}>
+        {index === pathSegments.length - 1 ? (
+          <span>{segment} /</span> 
+        ) : (
+          <Link href={`/${pathSegments.slice(0, index + 1).join('/')}`}>
+          <span className="text-link-blue hover:underline">{segment}</span>
+          </Link>
+        )}
+        {index !== pathSegments.length - 1 && (
+          <span className="mx-2">/</span>  // Delimiter
+        )}
+        </li>
+      ))}
       </ul>
-    </nav>
-  )
+      </nav>
+    )
+
       
 }
 

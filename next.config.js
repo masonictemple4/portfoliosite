@@ -9,7 +9,11 @@ module.exports = withPlugins([
   {
     reactStrictMode: true,
     images: {
-      domains: ['cdn.sanity.io'],
+      domains: [
+        'cdn.sanity.io',
+        'flowbite.s3.amazonaws.com',
+        'storage.googleapis.com',
+      ],
     },
     webpack: (config, { isServer }) => {
       if (!isServer) {

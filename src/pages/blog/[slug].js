@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco }  from 'react-syntax-highlighter/dist/cjs/styles/hljs';
 import remarkGfm from 'remark-gfm';
 import remarkFrontmatter from 'remark-frontmatter';
-
-import Feed from '@/components/markdown/feed.component';
-import axios from 'axios';
+import emoji from 'remark-emoji';
+import BlogDetailHeader from '@/components/blog/blogheader.component';
 
 export async function getServerSideProps(context) {
   const { slug } = context.query;
@@ -26,7 +25,7 @@ export async function getServerSideProps(context) {
   //  need to do this.
   //  const buf =  await pdResp.arrayBuffer();
   //  const data = Buffer.from(buf);
-  //
+
   const data = await pdResp.text();
 
   return {
@@ -43,7 +42,7 @@ const bufferToDataUrl = (type, buffer) => {
 };
 
 
-export default function NoteDetail({ post, data, contentType }) {
+export default function BlogDetail({ post, data, contentType }) {
 
   const [pageData, setPageData] = useState(data);
 
@@ -66,7 +65,11 @@ export default function NoteDetail({ post, data, contentType }) {
       )
     } else {
       return (
-          <ReactMarkdown className="prose w-full min-w-full max-w-full dark:prose-invert" children={data} remarkPlugins={[remarkFrontmatter, remarkGfm]} />
+        <>
+          <BlogDetailHeader blog={post} />
+          <ReactMarkdown className="prose w-full min-w-full max-w-full dark:prose-invert" children={data} remarkPlugins={[remarkFrontmatter, [emoji, {"emoticon": true}], remarkGfm]} />
+
+        </>
       )
     }
   }
