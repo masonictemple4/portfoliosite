@@ -11,12 +11,6 @@ export async function getServerSideProps(context) {
 
   const contentType = pdResp.headers.get('Content-Type');
 
-  //  When serving the data from golang we would
-  //  need to do this.
-  
-  //  const buf =  await pdResp.arrayBuffer();
-  //  const data = Buffer.from(buf);
-
   const data = await pdResp.text();
 
 
@@ -25,7 +19,6 @@ export async function getServerSideProps(context) {
     props: {
       data: data,
       contentType: contentType,
-      downloadBuff: buffData.toString('base64'),
     },
   };
 }
