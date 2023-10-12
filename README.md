@@ -1,3 +1,41 @@
+# Masonictemple4 Portfolio
+
+
+
+### Notes: 
+If you notice blog updates or detail page (especially with resumes) check the object cache settings in GCP they might need updated for a better experience.
+
+You can view/update meta properties of an object like so:
+```bash
+# View 
+$ gcloud storage objects describe gs://BUCKET_NAME/OBJECT_NAME
+
+
+# update
+gsutil setmeta -h "METADATA_KEY:METADATA_VALUE " gs://BUCKET_NAME/OBJECT_NAME
+
+```
+
+To modify cache-control set `Cache-control: no-store` for an object not to ever
+be cached.
+
+You can also set `public with max-age`
+
+For more [caching](https://cloud.google.com/storage/docs/caching) and [metadata updates](
+https://cloud.google.com/storage/docs/viewing-editing-metadata#gsutil_1)
+
+
+
+
+
+
+
+
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
