@@ -21,10 +21,11 @@ be cached.
 
 You can also set `public with max-age`
 
+
 For more [caching](https://cloud.google.com/storage/docs/caching) and [metadata updates](
 https://cloud.google.com/storage/docs/viewing-editing-metadata#gsutil_1)
 
-
+There are also SSR caching options: [here](https://github.com/vercel/next.js/blob/canary/examples/ssr-caching/pages/index.tsx) check out the next js docs as well.
 
 
 
