@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Markdown({ blogs }) {
+export default function Blog({ blogs }) {
 
   return (
     <Feed blogs={blogs} />

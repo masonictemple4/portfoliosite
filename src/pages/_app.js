@@ -17,11 +17,14 @@ export default function App({ Component, pageProps }) {
 
   const router = useRouter();
 
-  if (router.pathname.startsWith('/blog')) {
+  if (router.pathname.startsWith('/blog') || router.pathname.startsWith('/resume')) {
+    const disableBreadcrumb = router.pathname.startsWith('/blog') ? false : true;
+    const title = disableBreadcrumb ? 'The Ledger' : "The Software Engineer's Quarry";
+
        if (isClient) {
         return (
           <MainLayout>
-            <MarkdownLayout>
+            <MarkdownLayout diableBreadcrumbs={disableBreadcrumb} title={title}>
               <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
                 <Component {...pageProps} />
               </SessionProvider>
@@ -33,7 +36,7 @@ export default function App({ Component, pageProps }) {
           null
         )
       }
-  }  else {
+  } else {
     if (isClient) {
       return (
         <MainLayout>

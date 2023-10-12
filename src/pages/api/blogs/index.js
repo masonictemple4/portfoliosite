@@ -4,7 +4,7 @@
 import { getSession } from 'next-auth/react'
 import { BASE_API_URL } from '@/utils/globals';
 
-const notesList = async (req, res) => {
+const blogList = async (req, res) => {
   // const session = await getSession({ req })
 
   const { method, body } = req
@@ -33,4 +33,4 @@ const notesList = async (req, res) => {
   }
 }
 
-export default notesList
+export default blogList

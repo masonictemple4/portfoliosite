@@ -3,11 +3,11 @@ import { PageHeader } from '@/components/pageheader.component';
 
 import BreadCrumbs from '@/components/breadcrumbs/breadcrumbs.component';
 
-const MarkdownLayout = ({ children }) => {
+const MarkdownLayout = ({ children, diableBreadcrumbs, title }) => {
   return (
       <section className={"container"}>
-            <PageHeader plainText={''} gradientText={"The Software Engineer's Quarry"} />
-            <BreadCrumbs />
+            <PageHeader plainText={''} gradientText={title} />
+    {!diableBreadcrumbs && <BreadCrumbs />}
             <div className="w-2/3 mx-auto p-6">
               {children}
             </div>
