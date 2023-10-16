@@ -1,4 +1,3 @@
-'use client';
 import { PageHeader } from '@/components/pageheader.component';
 
 import BreadCrumbs from '@/components/breadcrumbs/breadcrumbs.component';
