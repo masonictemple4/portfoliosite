@@ -3,7 +3,7 @@ import { BASE_API_URL } from '@/utils/globals';
 
 
 export async function getServerSideProps(context) {
-  const response = await fetch(`${BASE_API_URL}/blogs`);
+  const response = await fetch(`${BASE_API_URL}/blog`);
   const data = await response.json();
   
 
