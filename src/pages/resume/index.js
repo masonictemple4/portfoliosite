@@ -7,7 +7,11 @@ import emoji from 'remark-emoji';
 import { PDF_RESUME_URL } from "@/utils/globals";
 
 export async function getServerSideProps(context) {
-  const pdResp = await fetch(MD_RESUME_URL + '?ignoreCache=1');
+  const pdResp = await fetch(MD_RESUME_URL + '?ignoreCache=1', {
+    headers: {
+      'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
+    },
+  });
 
   const contentType = pdResp.headers.get('Content-Type');
 

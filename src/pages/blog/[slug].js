@@ -11,7 +11,11 @@ import { BASE_API_URL } from '@/utils/globals';
 
 export async function getServerSideProps(context) {
   const { slug } = context.query;
-  const resp =  await fetch(`${BASE_API_URL}/blog/${slug}`);
+  const resp =  await fetch(`${BASE_API_URL}/blog/${slug}`, {
+    headers: {
+      'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
+    },
+  });
   const respJSON = await resp.json();
 
 

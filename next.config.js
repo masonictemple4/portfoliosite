@@ -12,7 +12,7 @@ module.exports = withPlugins([
       BASE_API_URL: process.env.BASE_API_URL || 'http://localhost:8080',
     },
     publicRuntimeConfig: {
-      BASE_API_URL: process.env.BASE_API_URL || 'https://masonictemple4.app',
+      BASE_API_URL: process.env.BASE_API_URL || 'http://localhost:8080',
     },
     images: {
       domains: [
