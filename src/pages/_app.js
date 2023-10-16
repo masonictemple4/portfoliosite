@@ -25,9 +25,7 @@ export default function App({ Component, pageProps }) {
         return (
           <MainLayout>
             <MarkdownLayout diableBreadcrumbs={disableBreadcrumb} title={title}>
-              <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
                 <Component {...pageProps} />
-              </SessionProvider>
             </MarkdownLayout>
           </MainLayout>
         )
@@ -40,9 +38,7 @@ export default function App({ Component, pageProps }) {
     if (isClient) {
       return (
         <MainLayout>
-          <SessionProvider session={pageProps.session} refetchInterval={5 * 60}>
             <Component {...pageProps} />
-          </SessionProvider>
         </MainLayout>
       )
     } else {

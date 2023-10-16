@@ -1,10 +1,9 @@
 import Feed from '@/components/blog/feed.component.js';
-import MarkdownLayout from './layout';
-import axios from 'axios';
+import { BASE_API_URL } from '@/utils/globals';
 
 
 export async function getServerSideProps(context) {
-  const response = await fetch('http://localhost:8080/blog');
+  const response = await fetch(`${BASE_API_URL}/blogs`);
   const data = await response.json();
   
 

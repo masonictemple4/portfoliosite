@@ -7,11 +7,11 @@ import remarkFrontmatter from 'remark-frontmatter';
 import emoji from 'remark-emoji';
 import BlogDetailHeader from '@/components/blog/blogheader.component';
 import Image from 'next/image';
+import { BASE_API_URL } from '@/utils/globals';
 
 export async function getServerSideProps(context) {
   const { slug } = context.query;
-  // Use ajax to grab the markdown file.
-  const resp =  await fetch('http://localhost:8080/blog/' + slug);
+  const resp =  await fetch(`${BASE_API_URL}/blog/${slug}`);
   const respJSON = await resp.json();
 
 
