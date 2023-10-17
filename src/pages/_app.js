@@ -38,7 +38,9 @@ export default function App({ Component, pageProps }) {
     if (isClient) {
       return (
         <MainLayout>
+          <section className="container">
             <Component {...pageProps} />
+          </section>
         </MainLayout>
       )
     } else {

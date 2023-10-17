@@ -26,3 +26,8 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.cm-editor {
+  height: calc(100vh - 1rem);
+  margin-bottom: 8px;
+}
+
